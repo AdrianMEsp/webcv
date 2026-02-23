@@ -6,6 +6,7 @@ import Tecnologies from "./sections/Tecnologies";
 import Contact from "./sections/Contact";
 import Education from "./sections/Education";
 import Proyects from "./sections/Proyects";
+import FloatingChat from "./components/FloatingChat/FloatingChat";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <section id="educacion"><Education /></section>
         <section id="idiomas"><Languages /></section>
         <section id="contacto"><Contact /></section>
+        <FloatingChat/>
       </main>
     </div>
   );
