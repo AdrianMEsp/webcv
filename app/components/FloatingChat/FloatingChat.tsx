@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Chat from "../chat/Chat";
+import { Chat } from "../chat/Chat";
 
 export default function FloatingChat() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +11,9 @@ export default function FloatingChat() {
       {/* Botón flotante (logo o ícono) */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-12 h-12 rounded-full bg-blue-500 text-white flex items-center justify-center shadow-lg hover:bg-blue-600"
+        className="w-12 h-12 rounded-full bg-blue-500
+         text-white flex items-center justify-center shadow-lg
+         hover:cursor-pointer hover:bg-blue-600"
       >
         💬
       </button>
@@ -23,7 +25,7 @@ export default function FloatingChat() {
             <span className="font-semibold">Chat</span>
             <button
               onClick={() => setIsOpen(false)}
-              className="text-gray-500 hover:text-red-500"
+              className="text-gray-500 hover:text-red-500 hover:cursor-pointer"
             >
               ✕
             </button>

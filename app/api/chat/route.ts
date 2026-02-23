@@ -1,17 +1,19 @@
 import { NextResponse } from "next/server";
-import { ChatKit } from "@openai/chatkit";
 
-const chatkit = new ChatKit({
-  apiKey: process.env.OPENAI_API_KEY!,
-});
-
-export async function POST(req: Request) {
-  const { messages } = await req.json();
-
-  const response = await chatkit.chat.completions.create({
-    model: "gpt-4o-mini", //gpt-4o-mini o gpt-4.1
-    messages,
+export async function POST() {
+  const res = await fetch("https://api.openai.com/v1/chatkit/sessions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "OpenAI-Beta": "chatkit_beta=v1",
+      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+    },
+    body: JSON.stringify({
+      workflow: { id: "wf_xxx_tu_workflow_id" }, // ID creado en Agent Builder
+      user: "user-123", // identificador único del usuario
+    }),
   });
 
-  return NextResponse.json(response);
+  const { client_secret } = await res.json();
+  return NextResponse.json({ client_secret });
 }
