@@ -39,7 +39,9 @@ export default function Chat() {
 }
  */
 
-'use client';
+/* Sin supabase, funcionaba pero no hacia las consultas */
+
+/* 'use client';
 
 import { useChat } from '@ai-sdk/react';
 import { useState } from 'react';
@@ -78,4 +80,67 @@ export default function Chat() {
       </form>
     </div>
   );
+} */
+
+"use client";
+
+import { useChat } from "@ai-sdk/react";
+import React from "react";
+
+export default function Chat() {
+    const { messages, setMessages, status, stop, reload} = useChat({
+        api: "/api/chat",
+    });
+
+    const [input, setInput] = React.useState("");
+
+    const sendMessage = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!input.trim()) return;
+
+        setMessages((prev) => [
+            ...prev, 
+            { id: crypto.randomUUID(),
+                role: "user", content: input 
+            },
+            ]);
+        // Hacemos la llamada manual al endpoint 
+        const res = await fetch("/api/chat",
+            {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    messages: [...messages, { role: "user", content: input },],
+                }),
+            });
+        const data = await res.json(); const reply = data.choices[0].message;
+        setMessages((prev) => [...prev, reply]);
+        setInput("");
+    };
+
+    return (
+        <div className="p-4 border rounded-lg bg-white shadow-md max-w-lg mx-auto">
+            <div className="h-64 overflow-y-auto mb-4 border p-2">
+                {messages.map((m) => (
+                    <div key={m.id} className={m.role === "user" ? "text-blue-600" : "text-gray-700"}>
+                        <strong>{m.role}:</strong> {m.content}
+                    </div>
+                ))}
+            </div>
+            <form onSubmit={sendMessage} className="flex space-x-2">
+                <input
+                    className="flex-1 border rounded px-2 py-1"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    placeholder="Escribe tu mensaje..."
+                />
+                <button
+                    type="submit"
+                    className="px-4 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
+                >
+                    Enviar
+                </button>
+            </form>
+        </div>
+    );
 }
