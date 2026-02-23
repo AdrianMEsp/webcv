@@ -30,7 +30,7 @@ export const translations = {
     },
     educacion: {
       title: "Educación",
-      analitycs: "Analista Programador Universitario. 55% de materias aprobadas. UNLP Facultad de Informática 2020-Presente",
+      analitycs: "Analista Programador Universitario. 55% de materias aprobadas. UNLP Facultad de Informática - Presente",
       fullstack: " Bootcamp Full Stack Web Developer - Soy Henry 80+ horas de programación intensiva en JavaScript, React, Node.js, PostgreSQL y metodologías ágiles (SCRUM) 07/2025 – 01/2026",
       java: " Backend con Java - Soy Henry 20+ horas de programación en Java, Spring Boot, JUnit5 y PostgreSQL 01/2025 – 04/2025"
     },
