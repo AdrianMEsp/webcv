@@ -27,6 +27,10 @@ export const translations = {
         name: "CoffeeLate",
         desc: "Aplicación e-commerce especializada en café y cafeteras, con búsquedas, filtrado y UI moderna.",
       },
+      chatbot: {
+        name: "Agente TOR-Prosperidad: by Podcast Jean Guillaume Salles",
+        desc: "Desarrollo de “Agente TOR-Prosperidad”, una aplicación impulsada por IA que integra Next.js, Tailwind CSS, Shadcn, embeddings en Supabase y GPT-4.1 Nano. Enfoque en la combinación de diseño frontend moderno con funcionalidades conversacionales inteligentes."
+      }
     },
     educacion: {
       title: "Educación",
@@ -71,6 +75,10 @@ export const translations = {
         name: "CoffeeLate",
         desc: "E-commerce app specialized in coffee and coffee machines, with search, filtering and modern UI.",
       },
+      chatbot: {
+        name: "Agent TOR-Prosperity: by Podcast Jean Guillaume Salles",
+        desc: "Developed “Agente TOR-Prosperidad”, an AI-driven application integrating Next.js, Tailwind CSS, Shadcn, Supabase embeddings, and GPT-4.1 Nano. Focused on combining modern frontend design with intelligent conversational features."
+      }
     },
     educacion: {
       title: "Education",
