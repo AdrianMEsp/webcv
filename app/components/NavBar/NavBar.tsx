@@ -1,15 +1,30 @@
 "use client";
 import { useLanguage } from "@/app/context/LanguageContext";
+import { useTheme } from "@/app/context/ThemeContext";
 import { useTranslation } from "@/app/translations/useTranslation";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const t = useTranslation();
   const { language, toggleLanguage } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const links = [
     { id: "resumen", label: t.navbar.resumen },
+    { id: "experiencia", label: t.navbar.experiencia },
     { id: "tecnologias", label: t.navbar.tecnologias },
     { id: "proyectos", label: t.navbar.proyectos },
     { id: "educacion", label: t.navbar.educacion },
@@ -18,62 +33,99 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <nav className="fixed top-0 w-full bg-white shadow-md z-50 flex items-center justify-between px-6">
-      
-      {/* Burger Button */}
-      <button
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-        type="button"
-        className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm
-           text-gray-500 rounded-lg md:hidden hover:bg-gray-200 focus:outline-none focus:ring-2
-           focus:ring-blue-400"
-      >
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 17 14">
-          <path
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M1 1h15M1 7h15M1 13h15"
-          />
-        </svg>
-      </button>
+    <nav 
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled ? "py-3 glass shadow-lg shadow-primary/5" : "py-6 bg-transparent"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
+        
+        {/* Logo/Name */}
+        <div className="text-xl font-bold tracking-tighter text-primary shrink-0">
+          AE<span className="text-accent">.</span>
+        </div>
 
-      {/* Overlay*/}
-      {isMenuOpen && (
-        <div className="fixed inset-0 md:hidden" 
-        onClick={() => setIsMenuOpen(false)}
-        ></div>
-      )}
+        {/* Desktop Menu */}
+        <ul className="hidden lg:flex items-center space-x-4 xl:space-x-8">
+          {links.map((link) => (
+            <li key={link.id}>
+              <a
+                href={`#${link.id}`}
+                 className="text-xs xl:text-sm font-bold text-foreground/70 hover:text-primary transition-colors uppercase tracking-wider px-1 py-1"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
 
-      {/* Menu */}
-      <ul
-        className={`flex-col md:mt-2 mt-50 md:flex border border-gray-500 md:border-0
-          md:flex-row md:space-x-6 py-4 absolute md:static left-0 w-full 
-          md:w-auto bg-white transition-all duration-300 ${
-          isMenuOpen ? "flex" : "hidden"
-        }`}
-      >
-        {links.map((link) => (
-          <li key={link.id} className="px-4 py-2 md:px-0 md:py-0">
-            <a
-              href={`#${link.id}`}
-              className="block text-gray-700 hover:text-blue-600 font-medium"
-              onClick={() => setIsMenuOpen(false)} // cerrar menú al hacer click
-            >
-              {link.label}
-            </a>
-          </li>
-        ))}
-      </ul>
+        {/* Actions */}
+        <div className="flex items-center gap-2 shrink-0">
+          {/* Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            className="w-9 h-9 flex items-center justify-center bg-secondary hover:bg-accent hover:text-white rounded-xl transition-all shadow-sm border border-border"
+            title="Toggle Theme"
+          >
+            {!mounted ? (
+              <div className="w-5 h-5" />
+            ) : theme === "light" ? (
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+            ) : (
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 9h-1m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+              </svg>
+            )}
+          </button>
 
-      {/* Language*/}
-      <button
-        onClick={toggleLanguage}
-        className="m-2 py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600"
-      >
-        {language === "es" ? "EN" : "ES"}
-      </button>
+          {/* Language Toggle */}
+          <button
+            onClick={toggleLanguage}
+            className="w-9 h-9 flex items-center justify-center font-bold text-xs bg-secondary hover:bg-primary hover:text-white rounded-xl transition-all shadow-sm border border-border"
+            title="Switch Language"
+          >
+            {language === "es" ? "EN" : "ES"}
+          </button>
+
+          {/* Burger Button (Mobile) */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="lg:hidden w-9 h-9 flex items-center justify-center text-foreground hover:bg-secondary rounded-xl transition-all"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="absolute top-full left-0 w-full bg-background/95 backdrop-blur-xl border-b border-border lg:hidden"
+          >
+            <ul className="flex flex-col p-6 space-y-4">
+              {links.map((link) => (
+                <li key={link.id}>
+                  <a
+                    href={`#${link.id}`}
+                    className="block text-lg font-bold text-foreground/80 hover:text-primary transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
