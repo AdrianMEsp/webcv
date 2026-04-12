@@ -1,20 +1,23 @@
-import React from "react";
 import Navbar from "./components/NavBar/NavBar";
 import Resumen from "./sections/Resume";
-import Languages from "./sections/Languages";
+import Experience from "./sections/Experience";
 import Tecnologies from "./sections/Tecnologies";
-import Contact from "./sections/Contact";
+import Projects from "./sections/Projects";
 import Education from "./sections/Education";
-import Proyects from "./sections/Proyects";
+import Languages from "./sections/Languages";
+import Contact from "./sections/Contact";
+import { TechTicker } from "./sections/Tech-ticker";
 
 function App() {
   return (
-    <div className="font-sans bg-gray-50 text-gray-900">
+    <div className="font-sans">
       <Navbar />
       <main className="scroll-smooth">
         <section id="resumen"><Resumen /></section>
+        <TechTicker/>
+        <section id="experiencia"><Experience /></section>
         <section id="tecnologias"><Tecnologies /></section>
-        <section id="proyectos"><Proyects /></section>
+        <section id="proyectos"><Projects /></section>
         <section id="educacion"><Education /></section>
         <section id="idiomas"><Languages /></section>
         <section id="contacto"><Contact /></section>
