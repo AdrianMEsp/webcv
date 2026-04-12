@@ -38,20 +38,20 @@ const Navbar: React.FC = () => {
         scrolled ? "py-3 glass shadow-lg shadow-primary/5" : "py-6 bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
         
         {/* Logo/Name */}
-        <div className="text-xl font-bold tracking-tighter text-primary">
+        <div className="text-xl font-bold tracking-tighter text-primary shrink-0">
           AE<span className="text-accent">.</span>
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center space-x-8">
+        <ul className="hidden lg:flex items-center space-x-4 xl:space-x-8">
           {links.map((link) => (
             <li key={link.id}>
               <a
                 href={`#${link.id}`}
-                className="text-sm font-bold text-foreground/70 hover:text-primary transition-colors uppercase tracking-widest px-2 py-1"
+                 className="text-xs xl:text-sm font-bold text-foreground/70 hover:text-primary transition-colors uppercase tracking-wider px-1 py-1"
               >
                 {link.label}
               </a>
@@ -60,11 +60,11 @@ const Navbar: React.FC = () => {
         </ul>
 
         {/* Actions */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 shrink-0">
           {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
-            className="w-10 h-10 flex items-center justify-center bg-secondary hover:bg-accent hover:text-white rounded-xl transition-all shadow-sm border border-border"
+            className="w-9 h-9 flex items-center justify-center bg-secondary hover:bg-accent hover:text-white rounded-xl transition-all shadow-sm border border-border"
             title="Toggle Theme"
           >
             {!mounted ? (
@@ -83,7 +83,7 @@ const Navbar: React.FC = () => {
           {/* Language Toggle */}
           <button
             onClick={toggleLanguage}
-            className="w-10 h-10 flex items-center justify-center font-bold text-xs bg-secondary hover:bg-primary hover:text-white rounded-xl transition-all shadow-sm border border-border"
+            className="w-9 h-9 flex items-center justify-center font-bold text-xs bg-secondary hover:bg-primary hover:text-white rounded-xl transition-all shadow-sm border border-border"
             title="Switch Language"
           >
             {language === "es" ? "EN" : "ES"}
@@ -92,7 +92,7 @@ const Navbar: React.FC = () => {
           {/* Burger Button (Mobile) */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden w-10 h-10 flex items-center justify-center text-foreground hover:bg-secondary rounded-xl transition-all"
+            className="lg:hidden w-9 h-9 flex items-center justify-center text-foreground hover:bg-secondary rounded-xl transition-all"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
@@ -108,7 +108,7 @@ const Navbar: React.FC = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 w-full bg-background/95 backdrop-blur-xl border-b border-border md:hidden"
+            className="absolute top-full left-0 w-full bg-background/95 backdrop-blur-xl border-b border-border lg:hidden"
           >
             <ul className="flex flex-col p-6 space-y-4">
               {links.map((link) => (

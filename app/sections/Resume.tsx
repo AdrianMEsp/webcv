@@ -7,14 +7,14 @@ const Resumen: React.FC = () => {
   const t = useTranslation();
 
   return (
-    <div className="min-h-[80vh] flex flex-col justify-center items-center px-6 text-center">
+    <div className="min-h-[80vh] flex flex-col justify-center pt-20 xs:pt-10  items-center px-6 text-center">
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
       >
         <span className="px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-bold tracking-wider uppercase mb-6 inline-block border border-primary/20">
-          Available for new opportunities
+          {t.resumen.header}
         </span>
         <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight text-foreground">
           {t.resumen.title}

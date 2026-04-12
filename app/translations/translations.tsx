@@ -10,6 +10,7 @@ export const translations = {
       contacto: "Contacto",
     },
     resumen: {
+      header: "Disponible para nuevas oportunidades",
       title: "Adrian Espindola",
       subtitle: "Desarrollador Fullstack",
       description:
@@ -91,6 +92,7 @@ export const translations = {
       contacto: "Contact",
     },
     resumen: {
+      header: "Available for new opportunities",
       title: "Adrian Espindola",
       subtitle: "Fullstack Developer",
       description:
