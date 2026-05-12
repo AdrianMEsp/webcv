@@ -144,7 +144,7 @@ export const translations = {
     educacion: {
       title: "Education",
       university: "University Programmer Analyst",
-      analitycs: "University Programmer Analyst. 55% of courses approved. UNLP Faculty of Informatics. 2020-Present",
+      analitycs: "University Programmer Analyst. 55% of courses approved. UNLP Faculty of Informatics. 2023-Present",
       fullstack: "Full Stack Web Developer – Soy Henry. 07/2025 – 01/2026",
       java: "Backend with Java – Soy Henry. 01/2025 – 04/2025"
     },
