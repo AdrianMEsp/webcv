@@ -11,6 +11,8 @@ import aichat from "@/app/assets/aichat.jpg";
 import aiproduct from "@/app/assets/aiproductt.jpg";
 import buildin from "@/app/assets/buildin.jpg";
 import next from "@/app/assets/next.jpg";
+import confeccaocafe from "@/app/assets/confeccaocafe.jpg";
+import ecommy from "@/app/assets/ecommy.jpg";
 
 const Projects: React.FC = () => {
   const t = useTranslation();
@@ -55,6 +57,22 @@ const Projects: React.FC = () => {
       link: "https://chatbotv2-eight.vercel.app/", // Keep original link from file
       stack: ["React", "Next.js", "Supabase", "GPT-4.1 Nano"],
       image: agentTor
+    },
+    {
+      id: "confeccaocafe",
+      name: t.proyectos.confeccaocafe.name,
+      desc: t.proyectos.confeccaocafe.desc,
+      link: "https://confeccaocafedobrasil.protolylat.com/",
+      stack: ["React 19", "Next.js", "TailwindCSS", "OpenCode"],
+      image: confeccaocafe
+    },
+    {
+      id: "ecommy",
+      name: t.proyectos.ecommy.name,
+      desc: t.proyectos.ecommy.desc,
+      link: "https://ecommy.protolylat.com/",
+      stack: ["React 19", "Next.js", "TailwindCSS", "OpenCode"],
+      image: ecommy
     },
     /* {
       id: "huellitas",
@@ -101,7 +119,7 @@ const Projects: React.FC = () => {
                   src={project.image} 
                   alt={project.name} 
                   fill 
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover scale-110 group-hover:scale-125 transition-transform duration-500"
                 />
               </div>
             )}
@@ -129,7 +147,7 @@ const Projects: React.FC = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-semibold text-white bg-primary rounded-xl hover:bg-primary/90 transition-colors gap-2"
                 >
-                  View Project
+                  {t.proyectos.viewProject}
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>

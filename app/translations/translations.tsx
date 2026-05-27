@@ -21,6 +21,7 @@ export const translations = {
     },
     proyectos: {
       title: "Proyectos",
+      viewProject: "Ver Proyecto",
       huellitas: {
         name: "Huellitas",
         desc: "Plataforma de comercio electrónico para servicios veterinarios con pasarela de pagos y gestión de roles.",
@@ -48,6 +49,14 @@ export const translations = {
       productbuilder: {
         name: "AI Product Builder",
         desc: "Herramienta optimizada para la creación y despliegue rápido de productos basados en IA.",
+      },
+      confeccaocafe: {
+        name: "Confecção Café",
+        desc: "Tienda e-commerce de bolsas artesanales hechas con sacos de café recicladas, con pasarela de pagos y carrito de compras.",
+      },
+      ecommy: {
+        name: "Ecommy",
+        desc: "Plataforma e-commerce para entrega de comida y productos de mercado, con carrito de compras y sistema de pedidos.",
       }
     },
     experiencia: {
@@ -103,6 +112,7 @@ export const translations = {
     },
     proyectos: {
       title: "Projects",
+      viewProject: "View Project",
       huellitas: {
         name: "Huellitas",
         desc: "E-commerce platform for veterinary services with payment gateway and role management.",
@@ -130,6 +140,14 @@ export const translations = {
       productbuilder: {
         name: "AI Product Builder",
         desc: "Optimized tool for rapid creation and deployment of AI-based products.",
+      },
+      confeccaocafe: {
+        name: "Confecção Café",
+        desc: "E-commerce store for handmade bags made from recycled coffee sacks, with payment gateway and shopping cart.",
+      },
+      ecommy: {
+        name: "Ecommy",
+        desc: "E-commerce platform for food and market product delivery, with shopping cart and order system.",
       }
     },
     experiencia: {
