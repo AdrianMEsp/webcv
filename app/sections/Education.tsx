@@ -11,7 +11,7 @@ const Education: React.FC = () => {
       title: t.educacion.university,
       institution: "UNLP Facultad de Informática",
       desc: t.educacion.analitycs,
-      period: "2020 - Present"
+      period: "2023 - Present"
     },
     {
       title: "Full Stack Web Developer Bootcamp",
