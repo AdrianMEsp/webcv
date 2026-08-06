@@ -135,7 +135,7 @@ const Projects: React.FC = () => {
               <div className="flex flex-wrap gap-2 mb-6 mt-auto">
                 {project.stack.map(tech => (
                   <span key={tech} className="text-[10px] uppercase tracking-wider font-bold text-accent bg-accent/10 px-2 py-0.5 rounded">
-                    {tech}
+                    {tech} 
                   </span>
                 ))}
               </div>
