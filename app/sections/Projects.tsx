@@ -129,7 +129,7 @@ const Projects: React.FC = () => {
                 {project.name}
               </h3>
               <p className="text-foreground/70 text-sm mb-4 line-clamp-3">
-                {project.desc} 
+                {project.desc}
               </p>
               
               <div className="flex flex-wrap gap-2 mb-6 mt-auto">
